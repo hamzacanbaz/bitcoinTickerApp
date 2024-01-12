@@ -110,13 +110,13 @@ class FirebaseRepositoryImpl @Inject constructor(
         emit(Resource.Error(it))
     }
 
-    override fun deleteFromFavourites(coinDetail: CoinDetail): Flow<Resource<Task<Void>>> = flow {
+    override fun deleteFromFavourites(coin: CoinDetail): Flow<Resource<Task<Void>>> = flow {
 
         emit(Resource.Loading)
         getFirebaseUserUid().collect {
 
             val favRef = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
-                .collection(COINS_COLLECTION).document(coinDetail.name.orEmpty()).delete()
+                .collection(COINS_COLLECTION).document(coin.name.orEmpty()).delete()
             favRef.await()
             emit(Resource.Success(favRef))
         }

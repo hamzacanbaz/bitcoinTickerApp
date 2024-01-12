@@ -125,7 +125,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/xSmallMarginSize"
                     android:background="@drawable/edittext_input_grey"
-                    android:hint="@string/test_email"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="@dimen/mediumPaddingSize" />
@@ -159,7 +158,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/xSmallMarginSize"
                     android:background="@drawable/edittext_input_grey"
-                    android:hint="@string/password_hint"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/mediumPaddingSize" />
@@ -208,13 +206,14 @@
                 android:id="@+id/tvAlreadyHaveAnAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mediumMarginSize"
                 android:layout_marginBottom="@dimen/largeMarginSize"
                 android:text="@string/do_you_already_have_account"
                 android:textSize="@dimen/smallTextSize"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/h_guideline_0.7" />
+                app:layout_constraintTop_toBottomOf="@id/btnRegister" />
 
             <Button
                 android:id="@+id/btnRegister"

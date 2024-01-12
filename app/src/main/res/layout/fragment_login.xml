@@ -125,7 +125,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/xSmallMarginSize"
                     android:background="@drawable/edittext_input_grey"
-                    android:hint="@string/test_email"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="16dp" />
@@ -159,7 +158,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/edittext_input_grey"
-                    android:hint="@string/password_hint"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/mediumPaddingSize" />
@@ -172,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.7" />
+                app:layout_constraintGuide_percent="0.6" />
 
 
             <TextView
@@ -184,8 +182,9 @@
                 android:textSize="@dimen/smallTextSize"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/mediumMarginSize"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/h_guideline_0.7" />
+                app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
             <Button
                 android:id="@+id/btnLogin"
