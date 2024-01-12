@@ -9,6 +9,7 @@ import com.canbazdev.bitcointickerapp.domain.usecase.coins.GetCoinByIDUseCase
 import com.canbazdev.bitcointickerapp.domain.usecase.coins.GetCurrentPriceByIdUseCase
 import com.canbazdev.bitcointickerapp.domain.usecase.favorite.AddToFavouritesUseCase
 import com.canbazdev.bitcointickerapp.domain.usecase.favorite.DeleteFromFavoritesUseCase
+import com.canbazdev.bitcointickerapp.domain.usecase.favorite.GetFavoriteCoinByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,7 +24,7 @@ class DetailViewModel @Inject constructor(
     private val currentPriceByIdUseCase: GetCurrentPriceByIdUseCase,
     private val addToFavouritesUseCase: AddToFavouritesUseCase,
     private val deleteFromFavouritesUseCase: DeleteFromFavoritesUseCase,
-
+    private val getFavoriteCoinByIdUseCase: GetFavoriteCoinByIdUseCase,
     ) : ViewModel() {
 
     val refreshTimeIntervals = listOf(Pair(10000,"10 sec"), Pair(30000,"30 sec"),Pair(60000,"60 sec"),Pair(90000,"10 sec"))
@@ -36,11 +37,16 @@ class DetailViewModel @Inject constructor(
     private val _currentPriceFlow = MutableStateFlow(0.0)
     val currentPriceFlow = _currentPriceFlow.asStateFlow()
 
+    private val _isFavFlow = MutableStateFlow(false)
+    val isFavFlow = _isFavFlow.asStateFlow()
+
 
     init {
         savedStateHandle.get<String>("coinId")?.let {
             getCoinById(it)
+            getCoinIsFav(it)
         }
+
     }
 
 
@@ -60,6 +66,23 @@ class DetailViewModel @Inject constructor(
             }
         }
     }
+
+    private fun getCoinIsFav(coinId: String) = viewModelScope.launch {
+        getFavoriteCoinByIdUseCase.invoke(coinId).collect { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _isFavFlow.emit(result.data)
+                }
+
+                is Resource.Loading -> _coinDetailFlow.emit(Resource.Loading)
+                is Resource.Error -> {
+                    println(result.throwable.localizedMessage)
+                    _coinDetailFlow.emit(Resource.Error(result.throwable))
+                }
+            }
+        }
+    }
+
 
     fun refreshCurrentCoinPeriodically(period: Duration) = viewModelScope.launch {
         savedStateHandle.get<String>("coinId")?.let {

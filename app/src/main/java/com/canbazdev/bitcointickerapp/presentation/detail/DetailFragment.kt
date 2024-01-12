@@ -1,8 +1,10 @@
 package com.canbazdev.bitcointickerapp.presentation.detail
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -92,6 +94,16 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>(
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.currentPriceFlow.collect {
                 binding.tvCoinPrice.text = "$$it"
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.isFavFlow.collect {
+                if (it){
+                    binding.ivFavImage.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.round_favorite_24))
+                }
+                else{
+                    binding.ivFavImage.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.round_favorite_border_24))
+                }
             }
         }
 

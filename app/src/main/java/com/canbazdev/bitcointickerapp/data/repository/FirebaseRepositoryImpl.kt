@@ -18,13 +18,11 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class FirebaseRepositoryImpl @Inject constructor(
-    private val firebaseAuth: FirebaseAuth,
-    private val firebaseFirestore: FirebaseFirestore
+    private val firebaseAuth: FirebaseAuth, private val firebaseFirestore: FirebaseFirestore
 ) : FirebaseRepository {
 
     override fun loginWithEmailAndPassword(
-        email: String,
-        password: String
+        email: String, password: String
     ): Flow<Resource<AuthResult>> = flow {
         emit(Resource.Loading)
         emit(Resource.Success(firebaseAuth.signInWithEmailAndPassword(email, password).await()))
@@ -65,10 +63,9 @@ class FirebaseRepositoryImpl @Inject constructor(
 
         emit(Resource.Loading)
         getFirebaseUserUid().collect {
-            val favRef =
-                firebaseFirestore.collection(FAVORITES_COLLECTION).document(it).collection(COINS_COLLECTION)
-                    .document(coinDetail.toFavouriteCoin().name.orEmpty())
-                    .set(coinDetail.toFavouriteCoin())
+            val favRef = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
+                .collection(COINS_COLLECTION).document(coinDetail.toFavouriteCoin().name.orEmpty())
+                .set(coinDetail.toFavouriteCoin())
             favRef.await()
             emit(Resource.Success(favRef))
         }
@@ -81,9 +78,8 @@ class FirebaseRepositoryImpl @Inject constructor(
 
         emit(Resource.Loading)
         getFirebaseUserUid().collect {
-            val snapshot =
-                firebaseFirestore.collection(FAVORITES_COLLECTION).document(it).collection(COINS_COLLECTION)
-                    .get().await()
+            val snapshot = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
+                .collection(COINS_COLLECTION).get().await()
 
             val data = snapshot.toObjects(CoinDetail::class.java)
             emit(Resource.Success(data))
@@ -92,20 +88,41 @@ class FirebaseRepositoryImpl @Inject constructor(
         emit(Resource.Error(it))
     }
 
-    override fun deleteFromFavourites(coinDetail: CoinDetail): Flow<Resource<Task<Void>>> =
-        flow {
+    override fun getFavouriteCoinById(coinId: String): Flow<Resource<Boolean>> = flow {
 
-            emit(Resource.Loading)
-            getFirebaseUserUid().collect {
+        emit(Resource.Loading)
+        getFirebaseUserUid().collect {
+            val snapshot = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
+                .collection(COINS_COLLECTION).get().await()
 
-                val favRef = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
-                    .collection(COINS_COLLECTION).document(coinDetail.name.orEmpty()).delete()
-                favRef.await()
-                emit(Resource.Success(favRef))
+            val data = snapshot.toObjects(CoinDetail::class.java)
+            val isCoinExists = data.find { coinDetail ->
+                coinDetail.coinId == coinId
             }
-        }.catch {
-            emit(Resource.Error(it))
+            if (isCoinExists == null) {
+                emit(Resource.Success(false))
+            } else {
+                emit(Resource.Success(true))
+            }
+
         }
+    }.catch {
+        emit(Resource.Error(it))
+    }
+
+    override fun deleteFromFavourites(coinDetail: CoinDetail): Flow<Resource<Task<Void>>> = flow {
+
+        emit(Resource.Loading)
+        getFirebaseUserUid().collect {
+
+            val favRef = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
+                .collection(COINS_COLLECTION).document(coinDetail.name.orEmpty()).delete()
+            favRef.await()
+            emit(Resource.Success(favRef))
+        }
+    }.catch {
+        emit(Resource.Error(it))
+    }
 
 
 }
