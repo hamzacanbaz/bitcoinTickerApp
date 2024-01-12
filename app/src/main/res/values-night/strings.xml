@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hashing_algorithm_title">Hashing Algorithm</string>
+    <string name="detail_title">Detail</string>
+    <string name="coin_name">Coin Name</string>
+    <string name="user_image_content_desc">user image</string>
+    <string name="fav_button_content_desc">Fav Button</string>
+    <string name="test_price">$45,000.00</string>
+    <string name="test_change">+12%</string>
+    <string name="seconds">Seconds</string>
+    <string name="detail">Detail</string>
+</resources>

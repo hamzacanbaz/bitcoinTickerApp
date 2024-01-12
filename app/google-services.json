@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "559666247305",
+    "project_id": "bitcoinapp-15032",
+    "storage_bucket": "bitcoinapp-15032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559666247305:android:1c87d93f77ba8dd90f7858",
+        "android_client_info": {
+          "package_name": "com.canbazdev.bitcointickerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFakchGnKNVDua950sbN21y6x46MBh2y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

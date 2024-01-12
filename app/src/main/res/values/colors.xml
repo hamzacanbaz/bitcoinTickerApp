@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_color">#FB8C00</color>
+    <color name="primary_dark_color">#EF6C00</color>
+    <color name="green">#19A54A</color>
+    <color name="red">#E74C3C</color>
+
+
+    <color name="md_orange_50">#FFF3E0</color>
+    <color name="md_orange_100">#FFE0B2</color>
+    <color name="md_orange_200">#FFCC80</color>
+    <color name="md_orange_300">#FFB74D</color>
+    <color name="md_orange_400">#FFA726</color>
+    <color name="md_orange_500">#FF9800</color>
+    <color name="md_orange_600">#FB8C00</color>
+    <color name="md_orange_700">#F57C00</color>
+    <color name="md_orange_800">#EF6C00</color>
+    <color name="md_orange_900">#E65100</color>
+    <color name="md_orange_A100">#FFD180</color>
+    <color name="md_orange_A200">#FFAB40</color>
+    <color name="md_orange_A400">#FF9100</color>
+    <color name="md_orange_A700">#FF6D00</color>
+
+
+    <color name="main_dark_blue">#0B59A1</color>
+    <color name="button_dark_green">#5DB075</color>
+    <color name="button_login_register">#19A54A</color>
+    <color name="grey">#BCB9B9</color>
+    <color name="white_smoke">#F6F6F6</color>
+
+    <color name="google_button_color">#E74C3C</color>
+    <color name="error_dialog_button_color">#EF3B54</color>
+    <color name="info_dialog_button_color">#0091EB</color>
+    <color name="question_dialog_button_color">#00B2CB</color>
+
+    <color name="input_light_green">#D9F4E1</color>
+    <color name="input_light_grey">#F0F1F2</color>
+
+    <color name="color_green">#A0D995</color>
+    <color name="onboarding_orange">#ECB390</color>
+    <color name="onboarding_pink">#FFC0D3</color>
+
+    <color name="dark_text_color">#393D43</color>
+    <color name="black_text_color">#1D232E</color>
+    <color name="normal_text_color">#5D6470</color>
+    <color name="light_text_color">#A7B0C0</color>
+
+    <color name="arrow_color">#808080</color>
+
+    <color name="page_indicator_default_color">#0B59A1</color>
+    <color name="page_indicator_half_transparent_color">#880B59A1</color>
+
+    <color name="bottom_nav_view_color">#EAF4EA</color>
+    <color name="bottom_nav_view_item_color">#0E737E</color>
+
+    <color name="bar_color">#4a7be5</color>
+
+</resources>

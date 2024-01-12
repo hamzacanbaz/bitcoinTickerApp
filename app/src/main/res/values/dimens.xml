@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="itemIconSize">32dp</dimen>
+    <dimen name="normalMarginSize">16dp</dimen>
+    <dimen name="largeMarginSize">32dp</dimen>
+    <dimen name="userImageSize">60dp</dimen>
+    <dimen name="largeTextSize">24sp</dimen>
+    <dimen name="normalRadiusSize">16dp</dimen>
+    <dimen name="mediumTextSize">20sp</dimen>
+    <dimen name="mediumSmallTextSize">18sp</dimen>
+
+
+</resources>

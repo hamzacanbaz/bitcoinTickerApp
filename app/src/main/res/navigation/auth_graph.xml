@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.canbazdev.bitcointickerapp.presentation.splash.SplashFragment"
+        android:label="fragment_splash_page"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/actionSplashToLogin"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/actionSplashToHome"
+            app:destination="@id/home_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.canbazdev.bitcointickerapp.presentation.login.LoginFragment"
+        android:label="fragment_sign_in_page"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/actionLoginToRegister"
+            app:destination="@id/registerFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionLoginToHome"
+            app:destination="@id/home_graph"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.canbazdev.bitcointickerapp.presentation.register.RegisterFragment"
+        android:label="fragment_sign_up_page"
+        tools:layout="@layout/fragment_register">
+        <action
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/actionRegisterToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <include app:graph="@navigation/home_graph" />
+</navigation>
+
+    <!--    app:enterAnim="@anim/slide_in_right"-->
+    <!--    app:exitAnim="@anim/slide_out_left"-->
+    <!--    app:popEnterAnim="@anim/slide_in_left"-->
+    <!--    app:popExitAnim="@anim/slide_out_right"-->

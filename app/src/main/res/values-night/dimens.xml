@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="itemIconSize">32dp</dimen>
+    <dimen name="largeMarginSize">32dp</dimen>
+    <dimen name="userImageSize">60dp</dimen>
+    <dimen name="largeTextSize">24sp</dimen>
+    <dimen name="normalRadiusSize">16dp</dimen>
+    <dimen name="mediumTextSize">20sp</dimen>
+</resources>

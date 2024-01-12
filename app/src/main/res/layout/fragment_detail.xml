@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.detail.DetailFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guideline_0.15"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guideline_0.85"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="@dimen/largeMarginSize"
+        android:layout_height="@dimen/largeMarginSize"
+        android:layout_marginStart="@dimen/largeMarginSize"
+        android:contentDescription="@string/user_image_content_desc"
+        android:src="@drawable/round_arrow_back_24"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvCoinName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normalMarginSize"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0.15"
+        app:layout_constraintEnd_toStartOf="@id/ivFavImage"
+        app:layout_constraintStart_toEndOf="@id/ivBack"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/coin_name" />
+
+    <ImageView
+        android:id="@+id/ivFavImage"
+        android:layout_width="@dimen/largeMarginSize"
+        android:layout_height="@dimen/largeMarginSize"
+        android:layout_marginEnd="@dimen/normalMarginSize"
+        android:contentDescription="@string/fav_button_content_desc"
+        android:src="@drawable/round_favorite_border_24"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0.15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/red" />
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/h_guideline_0.15">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/normalMarginSize"
+            android:background="@drawable/empty_rounded_bg"
+            android:backgroundTint="@color/md_orange_200"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivCoinImage"
+                android:layout_width="@dimen/userImageSize"
+                android:layout_height="@dimen/userImageSize"
+                android:layout_marginStart="@dimen/normalMarginSize"
+                android:layout_marginTop="@dimen/normalMarginSize"
+                android:contentDescription="@string/user_image_content_desc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/man" />
+
+
+            <TextView
+                android:id="@+id/tvCoinPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/normalMarginSize"
+                android:textColor="@color/white"
+                android:textSize="@dimen/largeTextSize"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ivCoinImage"
+                app:layout_constraintEnd_toStartOf="@id/tvCoinChangePercentage"
+                app:layout_constraintStart_toEndOf="@+id/ivCoinImage"
+                app:layout_constraintTop_toTopOf="@id/ivCoinImage"
+                tools:text="@string/test_price" />
+
+
+            <TextView
+                android:id="@+id/tvCoinChangePercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/normalMarginSize"
+                android:textColor="@color/white"
+                android:textSize="@dimen/largeTextSize"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ivCoinImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvCoinPrice"
+                app:layout_constraintTop_toTopOf="@id/ivCoinImage"
+                tools:text="@string/test_change" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/tilRefreshTime"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normalMarginSize"
+                android:layout_marginTop="@dimen/normalMarginSize"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="@dimen/normalRadiusSize"
+                app:boxCornerRadiusBottomStart="@dimen/normalRadiusSize"
+                app:boxCornerRadiusTopEnd="@dimen/normalRadiusSize"
+                app:boxCornerRadiusTopStart="@dimen/normalRadiusSize"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:errorTextColor="@color/red"
+                app:hintTextColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCoinImage">
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/actRefreshTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownHeight="wrap_content"
+                    android:hint="@string/seconds"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvHashingAlgorithmTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normalMarginSize"
+                android:layout_marginTop="@dimen/largeMarginSize"
+                android:layout_marginEnd="@dimen/normalMarginSize"
+                android:gravity="center"
+                android:text="@string/hashing_algorithm_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mediumTextSize"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tilRefreshTime"
+                app:layout_constraintTop_toBottomOf="@id/tvCoinChangePercentage" />
+
+            <TextView
+                android:id="@+id/tvHashingAlgorithm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normalMarginSize"
+                android:layout_marginTop="@dimen/normalMarginSize"
+                android:layout_marginEnd="@dimen/normalMarginSize"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mediumSmallTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tilRefreshTime"
+                app:layout_constraintTop_toBottomOf="@id/tvHashingAlgorithmTitle"
+                tools:text="@string/detail_title" />
+
+
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normalMarginSize"
+                android:layout_marginTop="@dimen/largeMarginSize"
+                android:layout_marginEnd="@dimen/normalMarginSize"
+                android:text="@string/detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/largeTextSize"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilRefreshTime" />
+
+            <TextView
+                android:id="@+id/tvDetailText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normalMarginSize"
+                android:layout_marginTop="@dimen/normalMarginSize"
+                android:layout_marginEnd="@dimen/normalMarginSize"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mediumSmallTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailTitle"
+                tools:text="@string/detail" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="170dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/h_guideline_0.85" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
