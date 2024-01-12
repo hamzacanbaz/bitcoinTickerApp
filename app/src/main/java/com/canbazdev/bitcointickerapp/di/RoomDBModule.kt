@@ -2,6 +2,7 @@ package com.canbazdev.bitcointickerapp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.canbazdev.bitcointickerapp.common.Constants.ROOM_DB_NAME
 import com.canbazdev.bitcointickerapp.data.source.local.room.CoinsDAO
 import com.canbazdev.bitcointickerapp.data.source.local.room.CoinsRoomDB
 import dagger.Module
@@ -21,7 +22,7 @@ object RoomDBModule {
         Room.databaseBuilder(
             appContext,
             CoinsRoomDB::class.java,
-            "coins.db"
+            ROOM_DB_NAME
         ).build()
 
     @Provides

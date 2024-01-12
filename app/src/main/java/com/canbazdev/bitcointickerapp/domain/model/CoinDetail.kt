@@ -1,7 +1,5 @@
 package com.canbazdev.bitcointickerapp.domain.model
 
-import androidx.room.Entity
-
 data class CoinDetail(
     val name: String? = "",
     val coinId: String? = "",

@@ -7,6 +7,7 @@ import androidx.work.WorkerParameters
 import com.canbazdev.bitcointickerapp.common.Constants.DESCRIPTION
 import com.canbazdev.bitcointickerapp.common.Constants.TITLE
 import com.canbazdev.bitcointickerapp.common.Resource
+import com.canbazdev.bitcointickerapp.common.extensions.showDLog
 import com.canbazdev.bitcointickerapp.domain.repository.FirebaseRepository
 import com.canbazdev.bitcointickerapp.domain.source.RemoteDataSource
 import com.canbazdev.bitcointickerapp.utils.NotificationUtils
@@ -21,7 +22,7 @@ class CoinWorker @AssistedInject constructor(
     private val remoteDataSource: RemoteDataSource
 ) : CoroutineWorker(appContext, workerParams) {
     override suspend fun doWork(): Result {
-        println("do workkkk")
+        showDLog("do work method executed")
         return try {
 
             var equalState = true
@@ -31,7 +32,7 @@ class CoinWorker @AssistedInject constructor(
             authRepository.getFavourites().collect { result ->
                 when (result) {
                     is Resource.Success -> {
-
+                        showDLog("worker executed and coin list refreshed")
                         if (result.data.isNotEmpty()) {
                             result.data.forEach { favourite ->
                                 coinsMarkets.forEach { coinMarkets ->

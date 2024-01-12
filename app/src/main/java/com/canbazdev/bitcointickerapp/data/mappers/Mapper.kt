@@ -4,11 +4,11 @@ import com.canbazdev.bitcointickerapp.data.model.coinDetail.CoinDetailResponse
 import com.canbazdev.bitcointickerapp.domain.model.CoinDetail
 import com.canbazdev.bitcointickerapp.domain.model.CoinList
 import com.canbazdev.bitcointickerapp.domain.model.CoinMarkets
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListEntity
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListResponse
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketEntity
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketResponse
-fun List<CoinListEntity>.toCoinListUI() = map {
+import com.canbazdev.bitcointickerapp.data.model.coinList.CoinListEntity
+import com.canbazdev.bitcointickerapp.data.model.coinList.CoinListResponse
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.CoinMarketEntity
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.CoinMarketResponse
+fun List<CoinListEntity>.toCoinList() = map {
     CoinList(
         id = it.id,
         coinId = it.coinId,
@@ -16,11 +16,11 @@ fun List<CoinListEntity>.toCoinListUI() = map {
     )
 }
 
-fun CoinDetailResponse.toCoinDetailUI() = CoinDetail(
-    name = name ?: " ",
+fun CoinDetailResponse.toCoinDetail() = CoinDetail(
+    name = name ?: "",
     coinId = id,
-    hashingAlgorithm = hashingAlgorithm ?: " ",
-    description = description?.en ?: " ",
+    hashingAlgorithm = hashingAlgorithm ?: "",
+    description = description?.en ?: "",
     image = image?.large,
     currentPrice = marketData?.currentPrice?.usd,
     priceChangePercentage24h = marketData?.priceChangePercentage24h
@@ -35,7 +35,7 @@ fun List<CoinListResponse>.toCoinListEntity() = map {
     )
 }
 
-fun List<CoinMarketEntity>.toCoinMarketsUI() = map {
+fun List<CoinMarketEntity>.toCoinMarkets() = map {
     CoinMarkets(
         id = it.id,
         coinId = it.coinId,
@@ -76,7 +76,7 @@ fun List<CoinMarketResponse>.toCoinMarketsEntity() = map {
     )
 }
 
-fun CoinDetail.toFavouriteUI() = CoinDetail(
+fun CoinDetail.toFavouriteCoin() = CoinDetail(
     name = name ?: "",
     coinId = coinId ?: "",
     hashingAlgorithm = hashingAlgorithm ?: "",

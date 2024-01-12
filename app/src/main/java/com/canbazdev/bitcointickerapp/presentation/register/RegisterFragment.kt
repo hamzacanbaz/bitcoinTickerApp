@@ -5,8 +5,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.canbazdev.bitcointickerapp.common.extensions.toast
-import com.canbazdev.bitcointicker.presentation.base.BaseFragment
-import com.canbazdev.bitcointicker.presentation.register.RegisterViewModel
+import com.canbazdev.bitcointickerapp.presentation.base.BaseFragment
 import com.canbazdev.bitcointickerapp.BitcoinTickerApp
 import com.canbazdev.bitcointickerapp.R
 import com.canbazdev.bitcointickerapp.common.Resource
@@ -48,12 +47,16 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, RegisterViewModel
                 when (result) {
                     is Resource.Loading -> {}
                     is Resource.Success -> {
-                        BitcoinTickerApp.instance.toast("Başarıyla üye olundu")
+                        BitcoinTickerApp.instance.toast(getString(R.string.success_register_text))
                         goToLogin()
                     }
 
                     is Resource.Error -> {
-                        BitcoinTickerApp.instance.toast("Bir Hata ile karşılaşıldı {${result.throwable.message.toString() + result.throwable.cause.toString()}}")
+                        BitcoinTickerApp.instance.toast(
+                            getString(
+                                R.string.error_register_text,
+                                result.throwable.message.toString() + result.throwable.cause.toString()
+                            ))
                     }
                 }
             }

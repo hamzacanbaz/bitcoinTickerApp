@@ -1,4 +1,4 @@
-package com.canbazdev.bitcointicker.presentation.search
+package com.canbazdev.bitcointickerapp.presentation.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,8 +20,6 @@ class SearchViewModel @Inject constructor(
 
     private val _coinListFlow = MutableStateFlow<Resource<List<CoinList>>>(Resource.Loading)
     val coinListFlow = _coinListFlow.asStateFlow()
-
-//    val coinList = getCoinListUseCase.invoke()
 
     init {
         viewModelScope.launch {

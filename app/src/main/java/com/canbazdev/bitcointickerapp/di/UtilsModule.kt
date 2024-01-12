@@ -1,8 +1,8 @@
 package com.canbazdev.bitcointickerapp.di
 
 import android.app.Application
-import com.canbazdev.bitcointickerapp.data.worker.WorkerImpl
-import com.canbazdev.bitcointickerapp.domain.usecase.WorkerProvider
+import com.canbazdev.bitcointickerapp.data.worker.WorkerProviderImpl
+import com.canbazdev.bitcointickerapp.domain.repository.WorkerProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +23,6 @@ object UtilsModule {
     @Provides
     @Singleton
     fun provideWorkerProvider(application: Application): WorkerProvider {
-        return WorkerImpl(application)
+        return WorkerProviderImpl(application)
     }
 }

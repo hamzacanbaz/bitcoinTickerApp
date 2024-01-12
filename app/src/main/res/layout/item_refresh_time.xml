@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="4dp"
+    android:layout_marginVertical="@dimen/xSmallMarginSize"
     android:gravity="center"
-    android:paddingVertical="12dp"
-    tools:text="ASDA">
-
+    android:paddingVertical="@dimen/smallPaddingSize"
+    tools:text="10 sec">
 </TextView>
 

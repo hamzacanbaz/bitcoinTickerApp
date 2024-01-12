@@ -1,4 +1,4 @@
-package com.canbazdev.bitcointicker.presentation.detail
+package com.canbazdev.bitcointickerapp.presentation.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -10,7 +10,6 @@ import com.canbazdev.bitcointickerapp.domain.usecase.coins.GetCurrentPriceByIdUs
 import com.canbazdev.bitcointickerapp.domain.usecase.favorite.AddToFavouritesUseCase
 import com.canbazdev.bitcointickerapp.domain.usecase.favorite.DeleteFromFavoritesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -80,7 +79,7 @@ class DetailViewModel @Inject constructor(
                 when (result) {
                     Resource.Loading -> {}
                     is Resource.Success -> {
-                        println("added to favw")
+                        println("added to fav")
                     }
 
                     is Resource.Error -> {

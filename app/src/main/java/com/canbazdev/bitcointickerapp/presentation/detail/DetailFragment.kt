@@ -10,8 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.canbazdev.bitcointickerapp.common.extensions.gone
 import com.canbazdev.bitcointickerapp.common.extensions.toast
 import com.canbazdev.bitcointickerapp.common.extensions.visible
-import com.canbazdev.bitcointicker.presentation.base.BaseFragment
-import com.canbazdev.bitcointicker.presentation.detail.DetailViewModel
+import com.canbazdev.bitcointickerapp.presentation.base.BaseFragment
 import com.canbazdev.bitcointickerapp.BitcoinTickerApp
 import com.canbazdev.bitcointickerapp.R
 import com.canbazdev.bitcointickerapp.common.Resource

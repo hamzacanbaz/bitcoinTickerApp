@@ -1,4 +1,4 @@
-package com.canbazdev.bitcointickerapp.data.model.coinlist
+package com.canbazdev.bitcointickerapp.data.model.coinList
 
 data class CoinListResponse(
     val id: String?,

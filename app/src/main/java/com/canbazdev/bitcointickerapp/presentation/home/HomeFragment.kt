@@ -10,11 +10,11 @@ import androidx.work.WorkInfo
 import com.canbazdev.bitcointickerapp.common.extensions.gone
 import com.canbazdev.bitcointickerapp.common.extensions.toast
 import com.canbazdev.bitcointickerapp.common.extensions.visible
-import com.canbazdev.bitcointicker.presentation.base.BaseFragment
-import com.canbazdev.bitcointicker.presentation.home.HomeViewModel
+import com.canbazdev.bitcointickerapp.presentation.base.BaseFragment
 import com.canbazdev.bitcointickerapp.BitcoinTickerApp
 import com.canbazdev.bitcointickerapp.R
 import com.canbazdev.bitcointickerapp.common.Resource
+import com.canbazdev.bitcointickerapp.common.extensions.showDLog
 import com.canbazdev.bitcointickerapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +31,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAdapter()
-        checkData()
         listen()
         observe()
     }
@@ -96,33 +95,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
             }
 
         }
-//        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-//            viewModel.refreshCoinWork.collect { result ->
-//
-//                if (result.isEmpty()) {
-//                    return@collect
-//                }
-//
-//                val workInfo: WorkInfo = result[0]
-//
-//                if (workInfo.state == WorkInfo.State.ENQUEUED) {
-//                    viewModel.getCoinMarkets()
-//                }
-//            }
-//        }
-
 
         viewModel.refreshCoinWork.observe(viewLifecycleOwner) { listOfWorkInfo ->
 
             if (listOfWorkInfo == null || listOfWorkInfo.isEmpty()) {
-                println("work null")
-                return@observe
+                showDLog("refresh coin worker is null!")
             }
 
             val workInfo: WorkInfo = listOfWorkInfo[0]
 
             if (workInfo.state == WorkInfo.State.ENQUEUED) {
-                println("work works")
+                showDLog("refresh coin worker works well")
                 viewModel.getCoinMarkets()
             }
         }
@@ -136,30 +119,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         val action = HomeFragmentDirections.actionHomePageToDetailPage(id)
         findNavController().navigate(action)
     }
-
-    private fun checkData() {
-
-        with(binding) {
-
-            with(homePageViewModel) {
-
-
-//                workInfo.observe(viewLifecycleOwner) { listOfWorkInfo ->
-//
-//                    if (listOfWorkInfo == null || listOfWorkInfo.isEmpty()) {
-//                        return@observe
-//                    }
-//
-//                    val workInfo: WorkInfo = listOfWorkInfo[0]
-//
-//                    if (workInfo.state == WorkInfo.State.ENQUEUED) {
-//                        coinMarkets()
-//                    }
-//                }
-
-            }
-        }
-    }
-
 
 }

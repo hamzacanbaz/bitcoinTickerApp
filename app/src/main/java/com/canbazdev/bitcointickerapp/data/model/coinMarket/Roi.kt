@@ -1,4 +1,4 @@
-package com.canbazdev.bitcointickerapp.data.model.coinmarket
+package com.canbazdev.bitcointickerapp.data.model.coinMarket
 
 import com.google.gson.annotations.SerializedName
 

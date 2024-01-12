@@ -1,8 +1,9 @@
 package com.canbazdev.bitcointickerapp.data.repository
 
+import com.canbazdev.bitcointickerapp.common.Constants.COINS_COLLECTION
 import com.canbazdev.bitcointickerapp.common.Constants.FAVORITES_COLLECTION
 import com.canbazdev.bitcointickerapp.common.Resource
-import com.canbazdev.bitcointickerapp.data.mappers.toFavouriteUI
+import com.canbazdev.bitcointickerapp.data.mappers.toFavouriteCoin
 import com.canbazdev.bitcointickerapp.domain.model.CoinDetail
 import com.canbazdev.bitcointickerapp.domain.repository.FirebaseRepository
 import com.google.android.gms.tasks.Task
@@ -53,7 +54,6 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override fun getCurrentUser(): Flow<Resource<FirebaseUser>> = flow {
         emit(Resource.Loading)
-
         firebaseAuth.currentUser?.let {
             emit(Resource.Success(it))
         }
@@ -61,18 +61,15 @@ class FirebaseRepositoryImpl @Inject constructor(
         emit(Resource.Error(it))
     }
 
-    override fun addToFavourites(coinDetailUI: CoinDetail): Flow<Resource<Task<Void>>> = flow {
+    override fun addToFavourites(coinDetail: CoinDetail): Flow<Resource<Task<Void>>> = flow {
 
         emit(Resource.Loading)
-
         getFirebaseUserUid().collect {
             val favRef =
-                firebaseFirestore.collection(FAVORITES_COLLECTION).document(it).collection("coins")
-                    .document(coinDetailUI.toFavouriteUI().name.orEmpty())
-                    .set(coinDetailUI.toFavouriteUI())
-
+                firebaseFirestore.collection(FAVORITES_COLLECTION).document(it).collection(COINS_COLLECTION)
+                    .document(coinDetail.toFavouriteCoin().name.orEmpty())
+                    .set(coinDetail.toFavouriteCoin())
             favRef.await()
-
             emit(Resource.Success(favRef))
         }
 
@@ -83,36 +80,29 @@ class FirebaseRepositoryImpl @Inject constructor(
     override fun getFavourites(): Flow<Resource<List<CoinDetail>>> = flow {
 
         emit(Resource.Loading)
-
         getFirebaseUserUid().collect {
-
             val snapshot =
-                firebaseFirestore.collection(FAVORITES_COLLECTION).document(it).collection("coins")
+                firebaseFirestore.collection(FAVORITES_COLLECTION).document(it).collection(COINS_COLLECTION)
                     .get().await()
 
             val data = snapshot.toObjects(CoinDetail::class.java)
-
             emit(Resource.Success(data))
         }
     }.catch {
         emit(Resource.Error(it))
     }
 
-    override fun deleteFromFavourites(favouritesUI: CoinDetail): Flow<Resource<Task<Void>>> =
+    override fun deleteFromFavourites(coinDetail: CoinDetail): Flow<Resource<Task<Void>>> =
         flow {
 
             emit(Resource.Loading)
-
             getFirebaseUserUid().collect {
 
                 val favRef = firebaseFirestore.collection(FAVORITES_COLLECTION).document(it)
-                    .collection("coins").document(favouritesUI.name.orEmpty()).delete()
-
+                    .collection(COINS_COLLECTION).document(coinDetail.name.orEmpty()).delete()
                 favRef.await()
-
                 emit(Resource.Success(favRef))
             }
-
         }.catch {
             emit(Resource.Error(it))
         }

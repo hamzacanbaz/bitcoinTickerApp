@@ -1,4 +1,4 @@
-package com.canbazdev.bitcointickerapp.data.model.coinmarket
+package com.canbazdev.bitcointickerapp.data.model.coinMarket
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

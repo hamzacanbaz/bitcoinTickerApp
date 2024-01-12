@@ -26,10 +26,11 @@
         app:layout_constraintGuide_percent="0.30" />
 
     <ImageView
-        android:id="@+id/iv_circlify_logo_bg"
+        android:id="@+id/ivAuthLogoBg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/cardview_dark_background"
+        android:contentDescription="@string/sign_up_image_content_desc"
         android:scaleType="centerCrop"
         android:src="@drawable/register_bg"
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0.35"
@@ -94,7 +95,7 @@
                 android:gravity="center"
                 android:text="@string/login"
                 android:textColor="@color/primary_dark_color"
-                android:textSize="22sp"
+                android:textSize="@dimen/mediumLargeTextSize"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/h_guideline_0.3"
                 app:layout_constraintStart_toStartOf="@id/v_guideline_0.15"
@@ -122,8 +123,9 @@
                     android:id="@+id/etMail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/xSmallMarginSize"
                     android:background="@drawable/edittext_input_grey"
+                    android:hint="@string/test_email"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="16dp" />
@@ -157,9 +159,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/edittext_input_grey"
+                    android:hint="@string/password_hint"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
-                    android:paddingHorizontal="16dp" />
+                    android:paddingHorizontal="@dimen/mediumPaddingSize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,9 +179,9 @@
                 android:id="@+id/tvNoAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="@dimen/largeMarginSize"
                 android:text="@string/dont_you_have_account"
-                android:textSize="16sp"
+                android:textSize="@dimen/smallTextSize"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -188,10 +191,10 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/mediumMarginSize"
                 android:background="@drawable/auth_button_bg"
-                android:text="Giriş Yap"
-                android:textSize="18sp"
+                android:text="@string/sign_in_text"
+                android:textSize="@dimen/mediumSmallTextSize"
                 app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="@id/v_guideline_0.85"
                 app:layout_constraintStart_toStartOf="@id/v_guideline_0.15"

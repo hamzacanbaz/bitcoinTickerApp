@@ -9,4 +9,20 @@
     <string name="test_change">+12%</string>
     <string name="seconds">Seconds</string>
     <string name="detail">Detail</string>
+    <string name="success_register_text">Başarıyla üye olundu</string>
+    <string name="error_register_text">Bir Hata ile karşılaşıldı {%1$s}</string>
+    <string name="error_login_text">Girişte Bir Hata ile karşılaşıldı {%1$s}</string>
+    <string name="all_coins">All Coins</string>
+    <string name="back_button">back button</string>
+    <string name="coin_image">coin image</string>
+    <string name="coin">Coin</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="test_email">h@h.com</string>
+    <string name="sign_up_image_content_desc">sign up image</string>
+    <string name="password_hint">123456</string>
+    <string name="sign_in_text">Sign In</string>
+    <string name="your_balance">Your balance</string>
+    <string name="search_icon_content_desc">search icon</string>
+    <string name="logout_content_desc">logout</string>
 </resources>

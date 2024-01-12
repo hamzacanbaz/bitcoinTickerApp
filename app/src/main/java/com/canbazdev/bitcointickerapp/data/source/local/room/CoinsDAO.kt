@@ -4,10 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListEntity
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketEntity
-import com.canbazdev.bitcointickerapp.domain.model.CoinList
-import com.canbazdev.bitcointickerapp.domain.model.CoinMarkets
+import com.canbazdev.bitcointickerapp.data.model.coinList.CoinListEntity
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.CoinMarketEntity
 
 @Dao
 interface CoinsDAO {

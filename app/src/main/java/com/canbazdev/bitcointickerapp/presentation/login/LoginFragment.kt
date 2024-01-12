@@ -5,8 +5,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.canbazdev.bitcointickerapp.common.extensions.toast
-import com.canbazdev.bitcointicker.presentation.base.BaseFragment
-import com.canbazdev.bitcointicker.presentation.login.LoginViewModel
+import com.canbazdev.bitcointickerapp.presentation.base.BaseFragment
 import com.canbazdev.bitcointickerapp.BitcoinTickerApp
 import com.canbazdev.bitcointickerapp.R
 import com.canbazdev.bitcointickerapp.common.Resource
@@ -52,7 +51,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
                 when (result) {
                     is Resource.Loading -> {}
                     is Resource.Success -> {
-                        BitcoinTickerApp.instance.toast("Başarıyla giriş yapıldı.")
+                        BitcoinTickerApp.instance.toast(getString(R.string.success_login_text))
                         val bundle = Bundle()
                         bundle.putString(FirebaseAnalytics.Param.METHOD, "login")
                         analytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle)
@@ -63,7 +62,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
                         println(result.throwable.message.toString())
                         Snackbar.make(
                             requireView(),
-                            "Girişte Bir Hata ile karşılaşıldı {${result.throwable.message.toString() + result.throwable.cause.toString()}}",
+                            getString(
+                                R.string.error_login_text,
+                                result.throwable.message.toString() + result.throwable.cause.toString()
+                            ),
                             Snackbar.LENGTH_SHORT
                         ).show()
 

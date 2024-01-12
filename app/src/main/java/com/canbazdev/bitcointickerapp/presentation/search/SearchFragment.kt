@@ -1,4 +1,4 @@
-package com.canbazdev.bitcointicker.presentation.search
+package com.canbazdev.bitcointickerapp.presentation.search
 
 import android.os.Bundle
 import android.view.View
@@ -8,12 +8,11 @@ import androidx.navigation.fragment.findNavController
 import com.canbazdev.bitcointickerapp.common.extensions.gone
 import com.canbazdev.bitcointickerapp.common.extensions.toast
 import com.canbazdev.bitcointickerapp.common.extensions.visible
-import com.canbazdev.bitcointicker.presentation.base.BaseFragment
+import com.canbazdev.bitcointickerapp.presentation.base.BaseFragment
 import com.canbazdev.bitcointickerapp.BitcoinTickerApp
 import com.canbazdev.bitcointickerapp.common.Resource
 import com.canbazdev.bitcointickerapp.databinding.FragmentSearchBinding
 import com.canbazdev.bitcointickerapp.presentation.home.CoinsItemDecoration
-import com.canbazdev.bitcointickerapp.presentation.search.SearchCoinAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

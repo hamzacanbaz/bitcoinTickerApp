@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.canbazdev.bitcointickerapp.R
 import com.canbazdev.bitcointickerapp.databinding.ItemCoinBinding
-import com.canbazdev.bitcointickerapp.domain.model.CoinList
 import com.canbazdev.bitcointickerapp.domain.model.CoinMarkets
 
 class CoinsAdapter(
@@ -19,11 +18,7 @@ class CoinsAdapter(
     private var userCurrentPosition: Int? = null
 
     inner class ViewHolder(private val binding: ItemCoinBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-
-        init {
-            itemView.setOnClickListener(this)
-        }
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bindItems(coin: CoinMarkets) {
             Glide.with(itemView.context).load(coin.image)
@@ -43,20 +38,6 @@ class CoinsAdapter(
             binding.cardCoin.setOnClickListener {
                 itemOnClick.invoke(coin.coinId ?: "bitcoin")
             }
-
-
-//            if (userCurrentPosition!=null && layoutPosition == userCurrentPosition) {
-//                binding.clActionImage.background =
-//                    itemView.context.resources.getDrawable(R.color.color_green)
-//            } else {
-//                binding.clActionImage.background =
-//                    itemView.context.resources.getDrawable(R.color.white)
-//
-//            }
-
-        }
-
-        override fun onClick(p0: View?) {
 
         }
 

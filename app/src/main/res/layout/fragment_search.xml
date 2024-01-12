@@ -15,22 +15,23 @@
 
     <ImageView
         android:id="@+id/ivBack"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/itemIconSize"
+        android:layout_height="@dimen/itemIconSize"
+        android:layout_marginStart="@dimen/mediumMarginSize"
         android:src="@drawable/round_arrow_back_24"
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0.10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back_button" />
 
 
     <TextView
         android:id="@+id/tvCoinName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="All Coins"
-        android:textSize="24sp"
+        android:layout_marginStart="@dimen/mediumMarginSize"
+        android:text="@string/all_coins"
+        android:textSize="@dimen/largeTextSize"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0.10"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +42,7 @@
         android:id="@+id/svCoinSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/smallMediumMarginSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/h_guideline_0.10" />
@@ -65,7 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
-        android:padding="170dp"
+        android:padding="@dimen/progressbarMarginSize"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

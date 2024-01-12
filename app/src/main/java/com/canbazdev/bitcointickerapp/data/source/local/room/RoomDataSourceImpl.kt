@@ -1,9 +1,7 @@
 package com.canbazdev.bitcointickerapp.data.source.local.room
 
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListEntity
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketEntity
-import com.canbazdev.bitcointickerapp.domain.model.CoinList
-import com.canbazdev.bitcointickerapp.domain.model.CoinMarkets
+import com.canbazdev.bitcointickerapp.data.model.coinList.CoinListEntity
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.CoinMarketEntity
 import com.canbazdev.bitcointickerapp.domain.source.LocalDataSource
 import javax.inject.Inject
 

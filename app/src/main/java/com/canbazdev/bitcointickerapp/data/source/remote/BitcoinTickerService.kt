@@ -1,10 +1,8 @@
 package com.canbazdev.bitcointickerapp.data.source.remote
 
 import com.canbazdev.bitcointickerapp.data.model.coinDetail.CoinDetailResponse
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListEntity
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListResponse
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketEntity
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketResponse
+import com.canbazdev.bitcointickerapp.data.model.coinList.CoinListResponse
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.CoinMarketResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

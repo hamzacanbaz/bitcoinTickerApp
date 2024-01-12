@@ -1,5 +1,6 @@
-package com.canbazdev.bitcointickerapp.data.model.coinmarket
+package com.canbazdev.bitcointickerapp.data.model.coinMarket
 
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.Roi
 import com.google.gson.annotations.SerializedName
 
 data class CoinMarketResponse(

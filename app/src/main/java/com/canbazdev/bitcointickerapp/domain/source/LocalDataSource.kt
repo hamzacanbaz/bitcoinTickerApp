@@ -1,7 +1,7 @@
 package com.canbazdev.bitcointickerapp.domain.source
 
-import com.canbazdev.bitcointickerapp.data.model.coinlist.CoinListEntity
-import com.canbazdev.bitcointickerapp.data.model.coinmarket.CoinMarketEntity
+import com.canbazdev.bitcointickerapp.data.model.coinList.CoinListEntity
+import com.canbazdev.bitcointickerapp.data.model.coinMarket.CoinMarketEntity
 
 
 interface LocalDataSource {

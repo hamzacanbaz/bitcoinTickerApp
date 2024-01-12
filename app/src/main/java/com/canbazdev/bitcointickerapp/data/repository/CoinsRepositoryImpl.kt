@@ -2,11 +2,11 @@ package com.canbazdev.bitcointickerapp.data.repository
 
 import androidx.room.withTransaction
 import com.canbazdev.bitcointickerapp.common.Resource
-import com.canbazdev.bitcointickerapp.data.mappers.toCoinDetailUI
+import com.canbazdev.bitcointickerapp.data.mappers.toCoinDetail
 import com.canbazdev.bitcointickerapp.data.mappers.toCoinListEntity
-import com.canbazdev.bitcointickerapp.data.mappers.toCoinListUI
+import com.canbazdev.bitcointickerapp.data.mappers.toCoinList
 import com.canbazdev.bitcointickerapp.data.mappers.toCoinMarketsEntity
-import com.canbazdev.bitcointickerapp.data.mappers.toCoinMarketsUI
+import com.canbazdev.bitcointickerapp.data.mappers.toCoinMarkets
 import com.canbazdev.bitcointickerapp.data.source.local.room.CoinsRoomDB
 import com.canbazdev.bitcointickerapp.domain.model.CoinDetail
 import com.canbazdev.bitcointickerapp.domain.model.CoinList
@@ -37,7 +37,7 @@ class CoinsRepositoryImpl constructor(
         emit(Resource.Loading)
         val cache = localDataSource.getCoinMarkets()
         if (cache.isNotEmpty()) {
-            emit(Resource.Success(cache.toCoinMarketsUI()))
+            emit(Resource.Success(cache.toCoinMarkets()))
         }
         val response = try {
             remoteDataSource.getCoinMarkets()
@@ -50,7 +50,7 @@ class CoinsRepositoryImpl constructor(
                 localDataSource.deleteCoinMarkets()
                 localDataSource.insertCoinMarketsList(data.toCoinMarketsEntity())
             }
-            emit(Resource.Success(localDataSource.getCoinMarkets().toCoinMarketsUI()))
+            emit(Resource.Success(localDataSource.getCoinMarkets().toCoinMarkets()))
         }
     }
 
@@ -58,7 +58,7 @@ class CoinsRepositoryImpl constructor(
         emit(Resource.Loading)
         val cache = localDataSource.getCoinList()
         if (cache.isNotEmpty()) {
-            emit(Resource.Success(cache.toCoinListUI()))
+            emit(Resource.Success(cache.toCoinList()))
         }
         val response = try {
             remoteDataSource.getCoinList()
@@ -70,13 +70,13 @@ class CoinsRepositoryImpl constructor(
             localDataSource.deleteCoinList()
             localDataSource.insertCoinList(data.toCoinListEntity())
         }
-        emit(Resource.Success(localDataSource.getCoinList().toCoinListUI()))
+        emit(Resource.Success(localDataSource.getCoinList().toCoinList()))
     }
 
     override fun coinById(coinId: String): Flow<Resource<CoinDetail>> = flow {
         try {
             emit(Resource.Loading)
-            emit(Resource.Success(remoteDataSource.getCoinById(coinId).toCoinDetailUI()))
+            emit(Resource.Success(remoteDataSource.getCoinById(coinId).toCoinDetail()))
         } catch (e: Exception) {
             emit(Resource.Error(e.cause ?: Throwable()))
 
@@ -86,19 +86,19 @@ class CoinsRepositoryImpl constructor(
 
     override fun searchCoin(searchQuery: String): Flow<Resource<List<CoinList>>> = flow {
         emit(Resource.Loading)
-        emit(Resource.Success(localDataSource.searchCoin(searchQuery).toCoinListUI()))
+        emit(Resource.Success(localDataSource.searchCoin(searchQuery).toCoinList()))
     }.catch {
         emit(Resource.Error(it))
     }
 
 
     override fun currentPriceById(period: Duration, coinId: String): Flow<Resource<Double>> =
-        channelFlow<Resource<Double>> {
+        channelFlow {
             job?.cancel()
             job = CoroutineScope(coroutineContextDefault).launch {
                 while (true) {
                     send(Resource.Loading)
-                    val data = remoteDataSource.getCoinById(coinId).toCoinDetailUI()
+                    val data = remoteDataSource.getCoinById(coinId).toCoinDetail()
                     data.currentPrice?.let {
                         send(Resource.Success(it))
                     }
