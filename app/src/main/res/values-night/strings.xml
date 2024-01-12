@@ -25,4 +25,5 @@
     <string name="your_balance">Your balance</string>
     <string name="search_icon_content_desc">search icon</string>
     <string name="logout_content_desc">logout</string>
+    <string name="favorites">Favorites</string>
 </resources>
