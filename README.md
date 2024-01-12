@@ -1,7 +1,7 @@
 # BitcoinTicker
  
 
-### An application developed as a Loodos Case and applied MVVM with Clean Architecture
+### An application developed as a case project and applied MVVM with Clean Architecture
 
 ## API
 - https://www.coingecko.com/api/documentation
