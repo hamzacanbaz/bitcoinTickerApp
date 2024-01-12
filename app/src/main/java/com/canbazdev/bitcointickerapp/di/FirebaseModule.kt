@@ -7,7 +7,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.perf.FirebasePerformance
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,10 +33,6 @@ object FirebaseModule {
     fun provideFirebaseAnalytics(application: Application): FirebaseAnalytics {
         return FirebaseAnalytics.getInstance(application)
     }
-
-    @Singleton
-    @Provides
-    fun provideFirebasePerformance(): FirebasePerformance = FirebasePerformance.getInstance()
 
     @Singleton
     @Provides
